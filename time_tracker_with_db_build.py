@@ -17,6 +17,10 @@ def main():
     conn = sqlite3.connect(database_path)
     cur = conn.cursor()
     cur.execute("""
+        PRAGMA foreign_keys = ON;
+        """)
+    conn.commit()
+    cur.execute("""
         CREATE TABLE IF NOT EXISTS sessions (
             id TEXT NOT NULL PRIMARY KEY,
             session_start TEXT NOT NULL,
